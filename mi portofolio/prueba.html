@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Caja Animada</title>
+  <style>
+    body {
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .animated-box {
+      width: 200px;
+      height: 200px;
+      background: red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: sans-serif;
+      font-size: 18px;
+      border-radius: 10px;
+      border: 2px solid white;
+      transition: transform 0.3s ease, background 0.5s ease;
+    }
+
+    .animated-box:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="animated-box" id="box">
+    Haz click
+  </div>
+
+  <script>
+    const box = document.getElementById("box");
+
+    // 🔁 Rotación inicial
+    box.style.transform = "rotate(90deg)";
+    setTimeout(() => {
+      box.style.transition = "transform 2s ease";
+      box.style.transform = "rotate(0deg)";
+    }, 50); // pequeño retraso para que se vea la transición
+
+    // 🎨 Función para color aleatorio
+    function randomColor() {
+      return "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+    }
+
+    // 🔄 Cambio de color al hacer click
+    box.addEventListener("click", () => {
+      box.style.background = randomColor();
+    });
+  </script>
+
+</body>
+</html>
